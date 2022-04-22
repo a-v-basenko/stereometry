@@ -20,4 +20,11 @@ public class Ball extends Body {
     public double volume() {
         return 4 * PI * pow(radius, 3) / 3;
     }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "radius=" + radius +
+                '}';
+    }
 }

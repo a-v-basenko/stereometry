@@ -26,4 +26,13 @@ public class Parallelepiped extends Body{
     public double volume() {
         return height * width * depth;
     }
+
+    @Override
+    public String toString() {
+        return "Parallelepiped{" +
+                "height=" + height +
+                ", width=" + width +
+                ", depth=" + depth +
+                '}';
+    }
 }

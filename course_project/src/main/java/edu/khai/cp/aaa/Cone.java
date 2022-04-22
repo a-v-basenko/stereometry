@@ -24,4 +24,12 @@ public class Cone extends Body{
     public double volume() {
         return PI * pow(radius, 2) * height / 3;
     }
+
+    @Override
+    public String toString() {
+        return "Cone{" +
+                "height=" + height +
+                ", radius=" + radius +
+                '}';
+    }
 }
