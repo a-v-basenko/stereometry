@@ -24,7 +24,7 @@ public class Series {
     }
 
     public double averageArea() {
-        if (bodies.size() == 0) return 0;
+        if (bodies.isEmpty()) return 0;
         double result = 0;
         for (Body body: bodies) {
             result += body.area();
@@ -33,12 +33,56 @@ public class Series {
     }
 
     public double averageVolume() {
-        if (bodies.size() == 0) return 0;
+        if (bodies.isEmpty()) return 0;
         double result = 0;
         for (Body body: bodies) {
             result += body.volume();
         }
         return result / bodies.size();
+    }
+
+    public Body minByArea() {
+        if (bodies.isEmpty()) throw new IllegalStateException();
+        Body minBodyByArea = bodies.get(0);
+        for (Body body: bodies) {
+            if (body.area() < minBodyByArea.area()) {
+                minBodyByArea = body;
+            }
+        }
+        return minBodyByArea;
+    }
+
+    public Body maxByArea() {
+        if (bodies.isEmpty()) throw new IllegalStateException();
+        Body maxBodyByArea = bodies.get(0);
+        for (Body body: bodies) {
+            if (body.area() > maxBodyByArea.area()) {
+                maxBodyByArea = body;
+            }
+        }
+        return maxBodyByArea;
+    }
+
+    public Body minByVolume() {
+        if (bodies.isEmpty()) throw new IllegalStateException();
+        Body minBodyByVolume = bodies.get(0);
+        for (Body body: bodies) {
+            if (body.volume() < minBodyByVolume.volume()) {
+                minBodyByVolume = body;
+            }
+        }
+        return minBodyByVolume;
+    }
+
+    public Body maxByVolume() {
+        if (bodies.isEmpty()) throw new IllegalStateException();
+        Body maxBodyByVolume = bodies.get(0);
+        for (Body body: bodies) {
+            if (body.volume() > maxBodyByVolume.volume()) {
+                maxBodyByVolume = body;
+            }
+        }
+        return maxBodyByVolume;
     }
 
     @Override
