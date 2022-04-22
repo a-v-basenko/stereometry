@@ -7,6 +7,8 @@ public class Cone extends Body{
     private final double radius;
 
     public Cone(Vector heightVector, Vector radiusVector) {
+        if (heightVector == null || radiusVector == null) throw new IllegalArgumentException();
+        if (heightVector.isZero() || radiusVector.isZero()) throw new IllegalArgumentException();
         if (!heightVector.isPerpendicular(radiusVector)) throw new IllegalArgumentException();
         height = heightVector.length();
         radius = radiusVector.length();

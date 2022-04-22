@@ -10,6 +10,7 @@ public class Vector {
     }
 
     public Vector(Point start, Point end) {
+        if (start == null || end == null) throw new IllegalArgumentException();
         vectorCoordinates = new Point(end.getX() - start.getX(), end.getY() - start.getY(), end.getZ() - start.getZ());
     }
 
@@ -19,5 +20,9 @@ public class Vector {
 
     public boolean isPerpendicular(Vector other) {
         return (vectorCoordinates.getX() * other.vectorCoordinates.getX() + vectorCoordinates.getY() * other.vectorCoordinates.getY() + vectorCoordinates.getZ() * other.vectorCoordinates.getZ()) == 0;
+    }
+
+    public boolean isZero() {
+        return vectorCoordinates.getX() == 0 && vectorCoordinates.getY() == 0 && vectorCoordinates.getZ() == 0;
     }
 }

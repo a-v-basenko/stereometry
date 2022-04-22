@@ -5,14 +5,16 @@ public class Parallelepiped extends Body{
     private final double width;
     private final double depth;
 
-    public Parallelepiped(Vector heightVector, Vector widthVector, Vector lengthVector) {
+    public Parallelepiped(Vector heightVector, Vector widthVector, Vector depthVector) {
+        if (heightVector == null || widthVector == null || depthVector == null) throw new IllegalArgumentException();
+        if (heightVector.isZero() || widthVector.isZero() || depthVector.isZero()) throw new IllegalArgumentException();
         if (!heightVector.isPerpendicular(widthVector)
-                || !widthVector.isPerpendicular(lengthVector)
-                || !lengthVector.isPerpendicular(heightVector)
+                || !widthVector.isPerpendicular(depthVector)
+                || !depthVector.isPerpendicular(heightVector)
         ) throw new IllegalArgumentException();
         height = heightVector.length();
         width = widthVector.length();
-        depth = lengthVector.length();
+        depth = depthVector.length();
     }
 
     @Override

@@ -6,6 +6,8 @@ public class Ball extends Body {
     private final double radius;
 
     public Ball(Vector radiusVector) {
+        if (radiusVector == null) throw new IllegalArgumentException();
+        if (radiusVector.isZero()) throw new IllegalArgumentException();
         radius = radiusVector.length();
     }
 
