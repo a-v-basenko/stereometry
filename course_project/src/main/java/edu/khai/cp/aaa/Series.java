@@ -23,6 +23,24 @@ public class Series {
         bodies.clear();
     }
 
+    public double averageArea() {
+        if (bodies.size() == 0) return 0;
+        double result = 0;
+        for (Body body: bodies) {
+            result += body.area();
+        }
+        return result / bodies.size();
+    }
+
+    public double averageVolume() {
+        if (bodies.size() == 0) return 0;
+        double result = 0;
+        for (Body body: bodies) {
+            result += body.volume();
+        }
+        return result / bodies.size();
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
