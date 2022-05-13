@@ -24,6 +24,11 @@ public class Series {
         bodies.clear();
     }
 
+    public Body get(int idx) {
+        if (idx < 0 || idx >= bodies.size()) throw new IllegalArgumentException();
+        return bodies.get(idx);
+    }
+
     public double averageArea() {
         if (bodies.isEmpty()) return 0;
         double result = 0;
