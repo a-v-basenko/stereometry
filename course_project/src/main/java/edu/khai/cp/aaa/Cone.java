@@ -7,9 +7,9 @@ public class Cone extends Body{
     private final double radius;
 
     public Cone(Vector heightVector, Vector radiusVector) {
-        if (heightVector == null || radiusVector == null) throw new IllegalArgumentException();
-        if (heightVector.isZero() || radiusVector.isZero()) throw new IllegalArgumentException();
-        if (!heightVector.isPerpendicular(radiusVector)) throw new IllegalArgumentException();
+        if (heightVector == null || radiusVector == null) throw new IllegalArgumentException("Generating vector(s) cannot be null!");
+        if (heightVector.isZero() || radiusVector.isZero()) throw new IllegalArgumentException("Generating vector(s) must be non-zero!");
+        if (!heightVector.isPerpendicular(radiusVector)) throw new IllegalArgumentException("Generating vectors must be mutually perpendicular!");
         height = heightVector.length();
         radius = radiusVector.length();
     }

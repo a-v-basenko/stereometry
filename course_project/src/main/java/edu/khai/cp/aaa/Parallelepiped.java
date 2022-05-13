@@ -6,12 +6,12 @@ public class Parallelepiped extends Body{
     private final double depth;
 
     public Parallelepiped(Vector heightVector, Vector widthVector, Vector depthVector) {
-        if (heightVector == null || widthVector == null || depthVector == null) throw new IllegalArgumentException();
-        if (heightVector.isZero() || widthVector.isZero() || depthVector.isZero()) throw new IllegalArgumentException();
+        if (heightVector == null || widthVector == null || depthVector == null) throw new IllegalArgumentException("Generating vector(s) cannot be null!");
+        if (heightVector.isZero() || widthVector.isZero() || depthVector.isZero()) throw new IllegalArgumentException("Generating vector(s) must be non-zero!");
         if (!heightVector.isPerpendicular(widthVector)
                 || !widthVector.isPerpendicular(depthVector)
                 || !depthVector.isPerpendicular(heightVector)
-        ) throw new IllegalArgumentException();
+        ) throw new IllegalArgumentException("Generating vectors must be mutually perpendicular!");
         height = heightVector.length();
         width = widthVector.length();
         depth = depthVector.length();

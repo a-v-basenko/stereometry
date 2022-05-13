@@ -11,12 +11,12 @@ public class Series {
     }
 
     public void add(Body body) {
-        if (body == null) throw new IllegalArgumentException();
+        if (body == null) throw new IllegalArgumentException("Body cannot be null!");
         bodies.add(body);
     }
 
     public void remove(int idx) {
-        if (idx < 0 || idx >= bodies.size()) throw new IllegalArgumentException();
+        if (idx < 0 || idx >= bodies.size()) throw new IllegalArgumentException("Index out of range!");
         bodies.remove(idx);
     }
 
@@ -25,7 +25,7 @@ public class Series {
     }
 
     public Body get(int idx) {
-        if (idx < 0 || idx >= bodies.size()) throw new IllegalArgumentException();
+        if (idx < 0 || idx >= bodies.size()) throw new IllegalArgumentException("Index out of range!");
         return bodies.get(idx);
     }
 
@@ -48,7 +48,7 @@ public class Series {
     }
 
     public Body minByArea() {
-        if (bodies.isEmpty()) throw new IllegalStateException();
+        if (bodies.isEmpty()) throw new IllegalStateException("List is empty!");
         Body minBodyByArea = bodies.get(0);
         for (Body body: bodies) {
             if (body.area() < minBodyByArea.area()) {
@@ -59,7 +59,7 @@ public class Series {
     }
 
     public Body maxByArea() {
-        if (bodies.isEmpty()) throw new IllegalStateException();
+        if (bodies.isEmpty()) throw new IllegalStateException("List is empty!");
         Body maxBodyByArea = bodies.get(0);
         for (Body body: bodies) {
             if (body.area() > maxBodyByArea.area()) {
@@ -70,7 +70,7 @@ public class Series {
     }
 
     public Body minByVolume() {
-        if (bodies.isEmpty()) throw new IllegalStateException();
+        if (bodies.isEmpty()) throw new IllegalStateException("List is empty!");
         Body minBodyByVolume = bodies.get(0);
         for (Body body: bodies) {
             if (body.volume() < minBodyByVolume.volume()) {
@@ -81,7 +81,7 @@ public class Series {
     }
 
     public Body maxByVolume() {
-        if (bodies.isEmpty()) throw new IllegalStateException();
+        if (bodies.isEmpty()) throw new IllegalStateException("List is empty!");
         Body maxBodyByVolume = bodies.get(0);
         for (Body body: bodies) {
             if (body.volume() > maxBodyByVolume.volume()) {
