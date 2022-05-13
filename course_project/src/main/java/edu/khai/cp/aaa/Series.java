@@ -11,6 +11,7 @@ public class Series {
     }
 
     public void add(Body body) {
+        if (body == null) throw new IllegalArgumentException();
         bodies.add(body);
     }
 

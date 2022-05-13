@@ -19,6 +19,8 @@ public class Vector {
     }
 
     public boolean isPerpendicular(Vector other) {
+        if (other == null) throw new IllegalArgumentException();
+        if (isZero() || other.isZero()) throw new IllegalArgumentException();
         return (vectorCoordinates.getX() * other.vectorCoordinates.getX() + vectorCoordinates.getY() * other.vectorCoordinates.getY() + vectorCoordinates.getZ() * other.vectorCoordinates.getZ()) == 0;
     }
 
