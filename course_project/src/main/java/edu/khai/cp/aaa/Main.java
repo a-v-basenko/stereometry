@@ -1,6 +1,14 @@
 package edu.khai.cp.aaa;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
+
+import static edu.khai.cp.aaa.FileUtils.fileContentProcessing;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
@@ -10,15 +18,16 @@ public class Main {
         boolean loop = true;
         while (loop) {
             System.out.println("""
-                1. Add body to the list
-                2. Remove body from the list
-                3. Clear the list
-                4. Get body from the list
-                5. Calculate average values
-                6. Find the body that has the min values
-                7. Find the body that has the max values
-                8. Review the list
-                0. Exit""");
+                    1. Add body to the list
+                    2. Remove body from the list
+                    3. Clear the list
+                    4. Get body from the list
+                    5. Calculate average values
+                    6. Find the body that has the min values
+                    7. Find the body that has the max values
+                    8. Review the list
+                    9. File Interaction
+                    0. Exit""");
             System.out.print("Enter action: ");
             switch (scanner.nextInt()) {
                 case 1 -> {
@@ -107,6 +116,35 @@ public class Main {
                     }
                 }
                 case 8 -> System.out.println(series);
+                case 9 -> {
+                    System.out.println("""
+                        1. Read from the file
+                        2. Write in the file""");
+                    System.out.print("Enter action: ");
+                    try {
+                        switch (scanner.nextInt()) {
+                            case 1 -> {
+                                List<String> content = Files.readAllLines(Path.of("src/main/java/edu/khai/cp/aaa/assets/in.txt"));
+                                List<Body> bodies = fileContentProcessing(content);
+                                for (Body body : bodies) {
+                                    series.add(body);
+                                }
+                            }
+                            case 2 -> {
+                                System.out.print("Enter file name: ");
+                                String fileName = scanner.next();
+                                try (FileOutputStream fos = new FileOutputStream("src/main/java/edu/khai/cp/aaa/assets/" + fileName + ".txt")) {
+                                    byte [] buffer = series.toString().getBytes(StandardCharsets.UTF_8);
+                                    fos.write(buffer, 0, buffer.length);
+                                } catch (IOException e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                        }
+                    } catch (IllegalStateException | IOException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
                 case 0 -> loop = false;
             }
         }
