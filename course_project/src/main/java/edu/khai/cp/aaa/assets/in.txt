@@ -1,0 +1,5 @@
+Ball(Vector(7, 5, 9))
+Ball(Vector(Point(0, 0, 0), Point(7, 5, 9)))
+Cone(Vector(7, 0, -5), Vector(Point(0, 0, 0), Point(5, 5, 7)))
+Ball(Vector(Point(7, 1, 8), Point(3, 5, 1)))
+Cone(Vector(3, 6, 15), Vector(Point(8, 3, 8), Point(5, 2, 9)))
